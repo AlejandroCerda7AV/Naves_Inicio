@@ -7,7 +7,15 @@ public:
 
 	CGame();
 	void Finalize();
+	
+	enum Estado{
+		ESTADO_INICIANDO,
+		ESTADO_MENU,
+		ESTADO_JUGANDO,
+		ESTADO_TERMINADO,
+		ESTADO_FINALIZADO
+	};
 
 private:
-	int estado;
+	Estado estado;
 };
