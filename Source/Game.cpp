@@ -6,6 +6,7 @@
 
 
 CGame::CGame(){
+
 	estado;
 	SDL_Surface*screen;
 	if (SDL_Init(SDL_INIT_VIDEO)){
@@ -21,6 +22,9 @@ CGame::CGame(){
 	SDL_Flip(screen);
 	SDL_WM_SetCaption("Mi primer juego", NULL);
 	atexit(SDL_Quit);
+
+	estado= ESTADO_INICIANDO;//ACT2: Mal, aqui debes de indicar tu estado inicial.
+
 }
 
 // Con esta función eliminaremos todos los elementos en pantalla
