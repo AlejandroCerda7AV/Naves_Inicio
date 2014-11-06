@@ -25,6 +25,17 @@ void CGame::Iniciando(){
 	}
 
 	SDL_WM_SetCaption("Mi primer juego", NULL);
+
+	nave=new Nave(screen,"../Data/MiNave.bmp",(WIDTH_SCREEN/2),(HEIGHT_SCREEN-80);
+	enemigo=new Nave(screen,"../Data/enemigo.bmp",0,0);
+
+	enemigoArreglo=new Nave*[10];
+	for(int i=0;i<10;i++)
+		enemigoArreglo[0]=new Nave(screen,"../Data/enemigo.bmp",0,0);
+
+	enemigo->SetStep(4);
+	for(int i=0;i<10;i++)
+		enemigoArreglo[i]->SetStep(4);
 }
 
 // Con esta función eliminaremos todos los elementos en pantalla
@@ -49,6 +60,7 @@ bool CGame::Start()
 			break;
 
 		case Estado::ESTADO_MENU:
+			SDL_FillRect(screen
 			
 			//screen=SDL_SetVideoMode
 			nave = IMG_LoadJPG_RW(SDL_RWFromFile("../Data/umi.jpg","rb"));
@@ -68,6 +80,11 @@ bool CGame::Start()
 			printf("\n5. ESTADO_FINALIZADO");
 			
 			}
+
+			nave->Pintar();
+			enemigo->Pintar();
+			for(int i=0;i<10;i++)
+				enemigoArreglo[i]->Pintar();
 			break;
 
 		case Estado::ESTADO_JUGANDO:
@@ -90,3 +107,24 @@ bool CGame::Start()
 	}
 	return true;
 }
+
+void CGame::MoverEnemigo(){
+	for(int i=0;i<10;i++)
+	switch(enemigo->ObtenerStepActual()){
+	case 0:
+		if(!enemigoArreglo[i]->IsRunningAnimacion())
+			enemigoArreglo[i]->Mover(2,WIDTH_SCREEN-enemigo->obtenerW());
+		//enemigo->IncrementarStep();
+		break;
+	case 1:
+		enemigoArreglo[i]->IncrementarStep();
+		break;
+	case 2:
+		if(!enemigoArreglo[i]->IsRunningAnimacion())
+			enemigoArreglo[i]->Mover(-2,WIDTH_SCREEN-enemigo->obtenerW());
+		//enemigo->IncrementarStep();
+		break;
+	case 3:
+		enemigo->IncrementarStep();
+		break;
+	}
