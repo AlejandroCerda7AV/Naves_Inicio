@@ -29,4 +29,8 @@ private:
 	SDL_Surface *screen;
 	SDL_Surface *nave;
 	Estado estado;
+	Nave*titulo;
+	Nave*menu;
+	Nave*fondo;
+
 };

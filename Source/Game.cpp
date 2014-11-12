@@ -27,11 +27,11 @@ void CGame::Iniciando(){
 	SDL_WM_SetCaption("Mi primer juego", NULL);
 
 	nave=new Nave(screen,"../Data/MiNave.bmp",(WIDTH_SCREEN/2),(HEIGHT_SCREEN-80);
-	enemigo=new Nave(screen,"../Data/enemigo.bmp",0,0);
+	menu=new Nave(screen,"../Data/Fondo juego.bmp",0.0);
 
-	enemigoArreglo=new Nave*[10];
+	enemigoArreglo*[10];
 	for(int i=0;i<10;i++)
-		enemigoArreglo[0]=new Nave(screen,"../Data/enemigo.bmp",0,0);
+		enemigoArreglo[i]=new Nave(screen,"../Data/enemigo.bmp",i*64,0);
 
 	enemigo->SetStep(4);
 	for(int i=0;i<10;i++)
@@ -47,59 +47,42 @@ bool CGame::Start()
 {
 	// Esta variable nos ayudara a controlar la salida del juego...
 	int salirJuego = false;
-	int bandera=0;
+	
 
 	while (salirJuego == false){
 
 		//Maquina de estados
 		switch(estado){
 		case  Estado::ESTADO_INICIANDO:
-			printf("\n1. ESTADO_INICIANDO");
 			Iniciando();
 			estado=ESTADO_MENU;
 			break;
 
 		case Estado::ESTADO_MENU:
+			menu->Pintar();
+			break;
+
+		case Estado::ESTADO_JUGANDO:
 			SDL_FillRect(screen
 			
 			//screen=SDL_SetVideoMode
-			nave = IMG_LoadJPG_RW(SDL_RWFromFile("../Data/umi.jpg","rb"));
+			nave = IMG_LoadJPG_RW(SDL_RWFromFile("../Data/enemigo.bmp","rb"));
 
 			SDL_BlitSurface(nave, NULL, screen, NULL);
 			SDL_FreeSurface(nave);
-			printf("\n2. ESTADO_MENU");
-			if(bandera<=0)
-			{
-				estado=ESTADO_JUGANDO;
-			printf("\n3. ESTADO_JUGANDO");
 			
-			}
-			else
-			{
-				estado=ESTADO_FINALIZADO;
-			printf("\n5. ESTADO_FINALIZADO");
-			
-			}
-
 			nave->Pintar();
 			enemigo->Pintar();
 			for(int i=0;i<10;i++)
 				enemigoArreglo[i]->Pintar();
-			break;
-
-		case Estado::ESTADO_JUGANDO:
-			printf("\n3. ESTADO_JUGANDO");
 			estado=ESTADO_TERMINADO;
 			break;
 
-		case Estado::ESTADO_TERMINADO:
-			printf("\n4. ESTADO_TERMINADO");
-			estado=ESTADO_FINALIZADO;
-			bandera=1;
+		case Estado::ESTADO_TERMINADO:			
+			estado=ESTADO_FINALIZADO;			
 			break;
 
-		case Estado::ESTADO_FINALIZADO:
-			printf("\n5. ESTADO_FINALIZADO");
+		case Estado::ESTADO_FINALIZADO:			
 			salirJuego = true;
 			break;
 			

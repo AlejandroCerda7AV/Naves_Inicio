@@ -71,7 +71,6 @@
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp" />
     <ClCompile Include="..\Source\Game.cpp" />
-    <ClCompile Include="Nave.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteDef.cpp" />
   </ItemGroup>
@@ -80,7 +79,6 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="Nave.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="SpriteDef.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Ejecutable\Readme.txt" />
