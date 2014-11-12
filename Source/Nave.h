@@ -8,13 +8,19 @@ int x;
 int y;
 int w;
 int h;
+int posicionActual;
+int posicionfinal;
+int stepsActual;
+int stepsFinal;
+int moduleUsing;
 
 Sprite * sprite;
 public:
-	Nave(SDL_Surface * screen, char * rutaImagen);
+	Nave(SDL_Surface * screen, char * rutaImagen, int x, int y, int modulo);
 	~Nave();
 	void Pintar();
-	void MoverDerecha(int posicion);
+	void Mover(int posicion);
+	void Mover(int brinco);
 	int obtenerX();
 	int obtenerY();
 	int obtenerW();

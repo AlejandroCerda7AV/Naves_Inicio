@@ -15,7 +15,7 @@ Nave::~Nave(){
 	delete sprite;
 }
 void Nave::Pintar(){
-	sprite->PintarModulo(0,x,y);
+	sprite->PintarModulo(moduleUsing,x,y);
 }
 void Nave::MoverDerecha(int posicion){
 	x += posicion;
